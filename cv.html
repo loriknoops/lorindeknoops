@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lorinde Knoops — CV</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green-deep:   #0D1F17;
+    --green-dark:   #112418;
+    --green-mid:    #1a3a26;
+    --green-accent: #5AB478;
+    --green-light:  #9FD4B0;
+    --green-dim:    rgba(90,180,120,0.15);
+    --green-border: rgba(90,180,120,0.2);
+    --text:         #E8F5EE;
+    --text-muted:   #7aad8e;
+    --text-dim:     #3d6b50;
+    --surface:      rgba(255,255,255,0.03);
+    --border:       rgba(255,255,255,0.07);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--green-deep);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  a { color: var(--green-accent); text-decoration: none; }
+  a:hover { color: var(--green-light); }
+
+  /* ── HERO ── */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: center;
+    padding: 56px 64px 48px;
+    border-bottom: 1px solid var(--green-border);
+    background: var(--green-dark);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--green-accent), transparent);
+  }
+
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+
+  .hero-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--green-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 20px;
+  }
+
+  .hero-bio {
+    font-size: 15px;
+    color: #b8d9c4;
+    line-height: 1.75;
+    max-width: 600px;
+    margin-bottom: 24px;
+    font-weight: 300;
+  }
+
+  .hero-links {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .hero-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.2s;
+  }
+
+  .hero-link:hover { color: var(--green-light); }
+
+  .hero-link-sep { color: var(--text-dim); font-size: 11px; }
+
+  .btn-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 18px;
+    background: var(--green-dim);
+    border: 1px solid var(--green-border);
+    border-radius: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--green-accent);
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    text-decoration: none;
+  }
+
+  .btn-download:hover {
+    background: rgba(90,180,120,0.25);
+    border-color: rgba(90,180,120,0.4);
+    color: var(--green-light);
+  }
+
+  /* ── PHOTO ── */
+  .photo-wrap {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--green-border);
+    flex-shrink: 0;
+    background: var(--green-mid);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .photo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .photo-placeholder {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    color: var(--green-accent);
+    opacity: 0.5;
+  }
+
+  /* ── LAYOUT ── */
+  .body-wrap {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 0;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 64px 64px;
+  }
+
+  @media(max-width: 800px) {
+    .hero { grid-template-columns: 1fr; padding: 32px 24px; }
+    .hero-name { font-size: 30px; }
+    .photo-wrap { width: 90px; height: 90px; }
+    .body-wrap { grid-template-columns: 1fr; padding: 0 24px 48px; }
+    .sidebar { border-right: none; border-bottom: 1px solid var(--green-border); padding: 32px 0 24px; margin-bottom: 32px; }
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    border-right: 1px solid var(--green-border);
+    padding: 40px 32px 40px 0;
+  }
+
+  .sidebar-section { margin-bottom: 32px; }
+
+  .sidebar-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--green-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 12px;
+  }
+
+  .skill-item {
+    font-size: 13px;
+    color: #b8d9c4;
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .lang-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .lang-name { font-size: 13px; color: #b8d9c4; font-weight: 300; }
+
+  .lang-level {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .tool-tag {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--text-muted);
+    background: var(--green-dim);
+    border: 1px solid var(--green-border);
+    border-radius: 4px;
+    padding: 2px 7px;
+    margin: 2px 2px 2px 0;
+  }
+
+  /* ── MAIN CONTENT ── */
+  .main-content { padding: 40px 0 0 40px; }
+
+  .section { margin-bottom: 40px; }
+
+  .section-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--green-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--green-border);
+  }
+
+  /* ── EXPERIENCE ENTRIES ── */
+  .entry { margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .entry:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .entry-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 3px;
+    flex-wrap: wrap;
+  }
+
+  .entry-org {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .entry-dates {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    white-space: nowrap;
+    margin-top: 3px;
+  }
+
+  .entry-role {
+    font-size: 12px;
+    color: var(--green-accent);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+  }
+
+  .entry-location {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    margin-bottom: 10px;
+  }
+
+  .entry-desc {
+    font-size: 13px;
+    color: #a0c8b0;
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 10px;
+  }
+
+  .bullet-list { list-style: none; padding: 0; }
+
+  .bullet-list li {
+    font-size: 13px;
+    color: #8ab89e;
+    line-height: 1.65;
+    padding: 3px 0 3px 16px;
+    position: relative;
+    font-weight: 300;
+  }
+
+  .bullet-list li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--green-accent);
+    opacity: 0.6;
+  }
+
+  /* ── EDUCATION ── */
+  .edu-entry { margin-bottom: 20px; }
+
+  .edu-org {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+
+  .edu-degree {
+    font-size: 13px;
+    color: var(--green-accent);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    margin-bottom: 2px;
+  }
+
+  .edu-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }
+
+  .edu-note {
+    font-size: 12px;
+    color: #7aad8e;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  /* ── EXTRAS ── */
+  .extras-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .extra-item {
+    font-size: 12px;
+    color: #8ab89e;
+    font-weight: 300;
+    line-height: 1.5;
+    padding: 3px 0 3px 14px;
+    position: relative;
+  }
+
+  .extra-item::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--green-accent);
+    opacity: 0.5;
+  }
+
+  @media(max-width: 600px) { .extras-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-name">Lorinde Knoops</div>
+    <div class="hero-title">Strategy · Implementation · Mission-Driven</div>
+    <p class="hero-bio">
+      Ex-BCG Project Leader with 7+ years of international experience in strategy and implementation.
+      I apply analytical rigor, execution strength, and people leadership to advance climate action,
+      global development, and public policy — especially at the intersection of emerging technologies
+      and positive societal outcomes.
+    </p>
+    <div class="hero-links">
+      <a class="hero-link" href="https://www.linkedin.com/in/lorindeknoops" target="_blank">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <span class="hero-link-sep">·</span>
+      <span class="hero-link">Bariloche, Patagonia, Argentina</span>
+      <span class="hero-link-sep">·</span>
+      <span class="hero-link">lorinde.knoops@gmail.com</span>
+      <span class="hero-link-sep">·</span>
+      <!-- Update this href to your actual PDF link once hosted -->
+      <a class="btn-download" href="https://github.com/loriknoops/job-dashboard/raw/main/CV__Lorinde_Knoops__jan2026.pdf" target="_blank">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        Download CV
+      </a>
+    </div>
+  </div>
+  <div class="photo-wrap" id="photo-wrap">
+    <!-- Replace src below with your actual photo URL once uploaded -->
+    <!-- <img src="YOUR_PHOTO_URL" alt="Lorinde Knoops"> -->
+    <div class="photo-placeholder">LK</div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="body-wrap">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">Core Skills</div>
+      <div class="skill-item">Strategy & project execution</div>
+      <div class="skill-item">Stakeholder mgmt & cross-cultural leadership</div>
+      <div class="skill-item">Data analysis & impact measurement</div>
+      <div class="skill-item">Public sector, NGOs, climate & development</div>
+      <div class="skill-item">PMO & complex change delivery</div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">Languages</div>
+      <div class="lang-item"><span class="lang-name">English</span><span class="lang-level">Native</span></div>
+      <div class="lang-item"><span class="lang-name">French</span><span class="lang-level">Native</span></div>
+      <div class="lang-item"><span class="lang-name">Dutch</span><span class="lang-level">Native</span></div>
+      <div class="lang-item"><span class="lang-name">Spanish</span><span class="lang-level">Fluent</span></div>
+      <div class="lang-item"><span class="lang-name">Swedish</span><span class="lang-level">Fluent</span></div>
+      <div class="lang-item"><span class="lang-name">German</span><span class="lang-level">Fluent</span></div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">Tools & Tech</div>
+      <span class="tool-tag">R</span>
+      <span class="tool-tag">Python</span>
+      <span class="tool-tag">Stata</span>
+      <span class="tool-tag">Matlab</span>
+      <span class="tool-tag">Gen AI</span>
+      <span class="tool-tag">Automation AI</span>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">Certifications</div>
+      <div class="skill-item">BCG Climate & Sustainability Accelerator (2025)</div>
+      <div class="skill-item">MIT DEDP MicroMasters (2025)</div>
+      <div class="skill-item">Bourse d'excellence, French State (2013)</div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">Interests</div>
+      <div class="skill-item">Trail running · Top 10 female, Cruce Trail 2025 (100km)</div>
+      <div class="skill-item">Climbing, skiing, kiting</div>
+      <div class="skill-item">Performing arts: singing & dance</div>
+      <div class="skill-item">Travel & cross-cultural exchange</div>
+    </div>
+
+  </div>
+
+  <!-- MAIN -->
+  <div class="main-content">
+
+    <!-- EXPERIENCE -->
+    <div class="section">
+      <div class="section-title">Work Experience</div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <div class="entry-org">Independent Consulting</div>
+          <div class="entry-dates">2025 – Present</div>
+        </div>
+        <div class="entry-role">Strategy Advisor & Consultant</div>
+        <div class="entry-location">Bariloche, Argentina</div>
+        <ul class="bullet-list">
+          <li>Advised local SMEs on strategy, sales and KPIs, generating tangible impact for founders</li>
+          <li>Led personal real estate project: renovations, budgeting, operational planning</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <div class="entry-org">The Boston Consulting Group</div>
+          <div class="entry-dates">2018 – 2025</div>
+        </div>
+        <div class="entry-role">Project Leader (LatAm) · Consultant & Associate (Europe)</div>
+        <div class="entry-location">Buenos Aires · Stockholm · Brussels · Amsterdam</div>
+        <p class="entry-desc">Promoted from Intern to Project Leader. Delivered 20+ strategic projects across Public Sector & NGOs, Climate & Sustainability, Energy, and Financial Services — managing multidisciplinary teams, senior stakeholders, and complex workstreams across 10+ countries.</p>
+        <ul class="bullet-list">
+          <li>Led social impact team advising TECHO CEO for 2+ years — one of LatAm's largest NGOs (18+ countries), on strategy, board-level decisions, fundraising and pitch development</li>
+          <li>Led inorganic growth assessment for Argentina's four main banks amid evolving payments ecosystem — full due diligence across regulatory, financial, technological and competitive dimensions</li>
+          <li>Redefined procurement strategy for a major LatAm utility (~$1.2bn spend), delivering savings strategies and launching the organization's first supplier Scope 3 emissions initiative</li>
+          <li>Identified 24 efficiency levers for a major E&P company (~40,000 boe/d), building a roadmap to unlock ~10–15% OPEX reduction and $36–40M in annual savings</li>
+          <li>Designed crisis response for a European welfare agency post major public failure — compensation scheme for ~40,000 families, led 7-person data & analytics team under high time pressure</li>
+          <li>Modeled CO2 transport and business scenarios identifying 6–12 Mt/year capture opportunities and assessed hundreds of millions in CAPEX for a viable low-carbon business</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <div class="entry-org">180 Degrees Consulting</div>
+          <div class="entry-dates">2018 – 2019</div>
+        </div>
+        <div class="entry-role">Project Manager (Volunteer)</div>
+        <div class="entry-location">Stockholm, Sweden</div>
+        <ul class="bullet-list">
+          <li>Led team of 4 providing pro bono consulting to non-profits, redesigning funding strategy for Social Initiative — a Swedish NGO scaling social entrepreneurs in low-income countries</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <div class="entry-org">Arthur D. Little</div>
+          <div class="entry-dates">2017</div>
+        </div>
+        <div class="entry-role">Management Consulting Intern</div>
+        <div class="entry-location">Stockholm, Sweden</div>
+        <ul class="bullet-list">
+          <li>Supported Public Sector and Healthcare engagements</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <div class="entry-org">Belgian Embassy Stockholm</div>
+          <div class="entry-dates">2016</div>
+        </div>
+        <div class="entry-role">Assistant to the Ambassador (Part-time)</div>
+        <div class="entry-location">Stockholm, Sweden</div>
+        <ul class="bullet-list">
+          <li>Supported the Ambassador on political and EU affairs through policy analysis, briefing notes, and high-level meeting preparation</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="section">
+      <div class="section-title">Education</div>
+
+      <div class="edu-entry">
+        <div class="edu-org">Massachusetts Institute of Technology</div>
+        <div class="edu-degree">MicroMasters — Data, Economics and Development Policy</div>
+        <div class="edu-meta">MITxOnline · 2025</div>
+        <div class="edu-note">Graduate-level courses taught by MIT Economics faculty (incl. Nobel laureate Esther Duflo), covering the intersection of data analysis and development economics</div>
+      </div>
+
+      <div class="edu-entry">
+        <div class="edu-org">KTH Royal Institute of Technology</div>
+        <div class="edu-degree">M.Sc. Industrial Engineering & Management — Applied Mathematics</div>
+        <div class="edu-meta">Stockholm, Sweden · 2013 – 2019</div>
+        <div class="edu-note">Thesis on humanitarian supply chains (Universidad Nacional de Colombia, 2019) · Exchanges at EPFL (Switzerland) and Universidad Técnica Federico Santa María (Chile)</div>
+      </div>
+
+      <div class="edu-entry">
+        <div class="edu-org">Lycée Français Saint Louis de Stockholm</div>
+        <div class="edu-degree">French Baccalauréat — Mathematics specialization</div>
+        <div class="edu-meta">Stockholm, Sweden · 2013</div>
+        <div class="edu-note">18.81/20, mention très bien avec félicitations · Swedish Slutbetyg 22.5/22.5</div>
+      </div>
+
+      <div class="edu-entry">
+        <div class="edu-org">Royal Swedish Ballet School & John Cranko Schule</div>
+        <div class="edu-degree">Professional Classical Dance Education</div>
+        <div class="edu-meta">Stockholm & Stuttgart · 2008 – 2011</div>
+      </div>
+
+    </div>
+
+    <!-- VOLUNTEERING -->
+    <div class="section">
+      <div class="section-title">Volunteering & Leadership</div>
+      <div class="extras-grid">
+        <div class="extra-item">Circuito Verde, community sustainability projects (2025)</div>
+        <div class="extra-item">Field volunteer, TECHO emergency housing constructions (2023–2025)</div>
+        <div class="extra-item">KTH Student Union Board & leadership roles (2013–2018)</div>
+        <div class="extra-item">Arts educator, Circo de los Niños, rural Mexico (2017)</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
